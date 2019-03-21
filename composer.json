@@ -1,0 +1,15 @@
+{
+    "name": "ameyrf/google-cloud-print",
+    "description": "A plugin to handle google cloud prints",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3@dev"
+    },
+    "authors": [
+        {
+            "name": "Amey Rane",
+            "email": "ameyrf@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
