@@ -2,7 +2,7 @@
 
 namespace GoogleCloudPrint\Utils;
 
-use GoogleCloudPrint\Api\ProcessInviteEntity;
+use GoogleCloudPrint\Api\ProcessPrinterInviteEntity;
 use GoogleCloudPrint\GooglePrintClient\GooglePrintClient;
 
 class Printer
@@ -18,14 +18,20 @@ class Printer
     {
         $googlePrintClient = new GooglePrintClient();
         $httpClient = $googlePrintClient->getAuthorisedClient();
-        $processInviteEntity = new ProcessInviteEntity($this->printerId);
+        $processPrinterInviteEntity = new ProcessPrinterInviteEntity($this->printerId);
 
         $response = $httpClient->request(
             'POST',
-            $processInviteEntity->getUrl(),
-            $processInviteEntity->toArray()
+            $processPrinterInviteEntity->getUrl(),
+            $processPrinterInviteEntity->toArray()
         );
 
         return $response->getBody()->getContents();
     }
+
+    public function printPdf(){}
+
+    public function printText(){}
+
+    public function printImage(){}
 }

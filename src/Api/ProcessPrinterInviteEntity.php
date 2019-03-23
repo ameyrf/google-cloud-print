@@ -2,7 +2,7 @@
 
 namespace GoogleCloudPrint\Api;
 
-class ProcessInviteEntity
+class ProcessPrinterInviteEntity
 {
     private $url = 'https://www.google.com/cloudprint/processinvite';
 
