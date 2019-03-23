@@ -7,11 +7,18 @@ use GoogleCloudPrint\GooglePrintClient\GooglePrintClient;
 
 class Printer
 {
-    public function processInvite(string $googlePrinterId)
+    private $printerId;
+
+    public function __construct(string $printerId)
+    {
+        $this->printerId = $printerId;
+    }
+
+    public function processInvite()
     {
         $googlePrintClient = new GooglePrintClient();
         $httpClient = $googlePrintClient->getAuthorisedClient();
-        $processInviteEntity = new ProcessInviteEntity($googlePrinterId);
+        $processInviteEntity = new ProcessInviteEntity($this->printerId);
 
         $response = $httpClient->request(
             'POST',

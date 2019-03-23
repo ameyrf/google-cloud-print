@@ -5,8 +5,8 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 
 $serviceAccountFilePath = dirname(__DIR__) . '/google-service-account.json';
 putenv('GOOGLE_SERVICE_ACCOUNT_JSON_FILE_PATH='. $serviceAccountFilePath);
-$pr = new \GoogleCloudPrint\Utils\Printer();
-var_dump($pr->processInvite('4ab20b52-8ef8-ff32-0066-4034ce6aae99'));
+$pr = new \GoogleCloudPrint\Utils\Printer('4ab20b52-8ef8-ff32-0066-4034ce6aae99');
+var_dump($pr->processInvite());
 
 
 /*
