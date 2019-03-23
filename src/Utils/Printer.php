@@ -2,22 +2,23 @@
 
 namespace GoogleCloudPrint\Utils;
 
-use GuzzleHttp\Client;
+use GoogleCloudPrint\Api\ProcessInviteEntity;
+use GoogleCloudPrint\GooglePrintClient\GooglePrintClient;
 
 class Printer
 {
-    protected static $url = 'https://ai.live.ameyindustries.in/sizes/view/1.json';
-
-    /**
-     * Send print
-     *
-     */
-    public static function sendPrint()
+    public function processInvite(string $googlePrinterId)
     {
-        $client = new Client();
+        $googlePrintClient = new GooglePrintClient();
+        $httpClient = $googlePrintClient->getAuthorisedClient();
+        $processInviteEntity = new ProcessInviteEntity($googlePrinterId);
 
-        $response = $client->get(self::$url);
+        $response = $httpClient->request(
+            'POST',
+            $processInviteEntity->getUrl(),
+            $processInviteEntity->toArray()
+        );
 
-        echo $response->getBody();
+        return $response->getBody()->getContents();
     }
 }
